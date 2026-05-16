@@ -1,11 +1,23 @@
 {{!< default}}
 
+{{#match pagination.page 1}}
+    {{> "cover-site"}}
+{{/match}}
+
 <main class="gh-main gh-outer">
     <div class="gh-inner">
 
-        <section class="gh-pagehead">
-            <h1 class="gh-pagehead-title">{{t "Latest"}}</h1>
-        </section>
+        {{#match pagination.page 1}}
+            {{^if @site.cover_image}}
+                <section class="gh-pagehead">
+                    <h1 class="gh-pagehead-title">{{t "Latest"}}</h1>
+                </section>
+            {{/if}}
+        {{else}}
+            <section class="gh-pagehead">
+                <h1 class="gh-pagehead-title">{{t "Latest"}}</h1>
+            </section>
+        {{/match}}
 
         <div class="gh-topic gh-topic-grid">
             <div class="gh-topic-content gh-feed">

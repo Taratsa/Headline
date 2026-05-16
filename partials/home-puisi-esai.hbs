@@ -1,0 +1,71 @@
+<section class="gh-home-split">
+    <div class="gh-home-split-grid">
+        <div class="gh-home-split-col gh-home-split-col--puisi gh-topic gh-topic-grid">
+            <h2 class="gh-topic-name gh-home-split-title">
+                {{#get "tags" filter="slug:puisi" limit="1"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                            <a href="{{url}}">{{name}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a href="{{@site.url}}/tag/puisi/">Puisi</a>
+                    {{/if}}
+                {{/get}}
+            </h2>
+
+            <div class="gh-topic-content gh-home-split-content">
+                {{#get "posts" include="tags,authors" filter="tag:puisi" limit="6"}}
+                    {{#foreach posts}}
+                        {{> "loop-grid" has_large_post=false no_excerpt=true stack_feature=true}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
+
+            <footer class="gh-topic-footer gh-home-split-footer">
+                {{#get "tags" filter="slug:puisi" limit="1"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                            <a class="gh-topic-link" href="{{url}}">{{t "Show more"}} {{> "icons/arrow"}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a class="gh-topic-link" href="{{@site.url}}/tag/puisi/">{{t "Show more"}} {{> "icons/arrow"}}</a>
+                    {{/if}}
+                {{/get}}
+            </footer>
+        </div>
+
+        <div class="gh-home-split-col gh-home-split-col--esai gh-topic gh-topic-grid">
+            <h2 class="gh-topic-name gh-home-split-title">
+                {{#get "tags" filter="slug:esai" limit="1"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                            <a href="{{url}}">{{name}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a href="{{@site.url}}/tag/esai/">Esai</a>
+                    {{/if}}
+                {{/get}}
+            </h2>
+
+            <div class="gh-topic-content gh-home-split-content gh-home-split-content--single">
+                {{#get "posts" include="tags,authors" filter="tag:esai" limit="1"}}
+                    {{#foreach posts}}
+                        {{> "loop-grid" has_large_post=false force_excerpt=true excerpt_words="500" stack_feature=true}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
+
+            <footer class="gh-topic-footer gh-home-split-footer">
+                {{#get "tags" filter="slug:esai" limit="1"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                            <a class="gh-topic-link" href="{{url}}">{{t "Show more"}} {{> "icons/arrow"}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a class="gh-topic-link" href="{{@site.url}}/tag/esai/">{{t "Show more"}} {{> "icons/arrow"}}</a>
+                    {{/if}}
+                {{/get}}
+            </footer>
+        </div>
+    </div>
+</section>

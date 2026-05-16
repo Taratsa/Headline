@@ -49,7 +49,7 @@
             },
             "header_style": {
                 "type": "select",
-                "options": ["Light", "Accent color", "Dark"],
+                "options": ["Light", "Accent color", "Dark", "Grey"],
                 "default": "Light"
             },
             "title_font": {

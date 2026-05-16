@@ -1,0 +1,32 @@
+{{#if isSecondary}}
+    <ul class="nav">
+        {{#foreach navigation}}
+            <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
+                <a href="{{url absolute="true"}}">{{label}}</a>
+            </li>
+        {{/foreach}}
+    </ul>
+{{else}}
+    <ul class="nav">
+        {{#foreach navigation}}
+            <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
+                <a href="{{url absolute="true"}}">{{label}}</a>
+            </li>
+        {{/foreach}}
+        <li class="gh-nav-dropdown nav-tentang-kami" data-nav-dropdown>
+            <button
+                type="button"
+                class="gh-nav-dropdown-toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="nav-panel-tentang-kami"
+            >
+                Tentang Kami
+            </button>
+            <ul class="gh-nav-dropdown-menu" id="nav-panel-tentang-kami" role="menu">
+                <li role="none"><a role="menuitem" href="{{@site.url}}/about/">Profil</a></li>
+                <li role="none"><a role="menuitem" href="{{@site.url}}/contact/">Kontak</a></li>
+            </ul>
+        </li>
+    </ul>
+{{/if}}

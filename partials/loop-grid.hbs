@@ -1,5 +1,6 @@
-<article class="gh-card {{post_class}}{{#match has_large_post "!=" false}}{{#has index="0"}} large{{/has}}{{/match}}">
+<article class="gh-card {{post_class}}{{#match has_large_post "!=" false}}{{#has index="0"}} large{{/has}}{{/match}}{{#if stack_feature}} gh-card--stack-feature{{/if}}">
     <a class="gh-card-link" href="{{url}}">
+        {{#unless no_feature_image}}
         {{#if feature_image}}
             <figure class="gh-card-image">
                 <img
@@ -14,21 +15,34 @@
                 >
             </figure>
         {{/if}}
+        {{/unless}}
 
         <div class="gh-card-wrapper">
             <header class="gh-card-header">
                 <h3 class="gh-card-title">{{title}}</h3>
             </header>
 
-            {{#if excerpt}}
-                {{#is "home"}}
-                    {{#has index="0"}}
-                        <div class="gh-card-excerpt">{{excerpt}}</div>
-                    {{/has}}
+            {{#unless no_excerpt}}
+                {{#if force_excerpt}}
+                    {{#if excerpt_words}}
+                        <div class="gh-card-excerpt">{{excerpt words=excerpt_words}}</div>
+                    {{else}}
+                        {{#if excerpt}}
+                            <div class="gh-card-excerpt">{{excerpt}}</div>
+                        {{/if}}
+                    {{/if}}
                 {{else}}
-                    <div class="gh-card-excerpt">{{excerpt}}</div>
-                {{/is}}
-            {{/if}}
+                    {{#if excerpt}}
+                        {{#is "home"}}
+                            {{#has index="0"}}
+                                <div class="gh-card-excerpt">{{excerpt}}</div>
+                            {{/has}}
+                        {{else}}
+                            <div class="gh-card-excerpt">{{excerpt}}</div>
+                        {{/is}}
+                    {{/if}}
+                {{/if}}
+            {{/unless}}
 
             <footer class="gh-card-footer">
                 <span class="gh-card-author">{{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>

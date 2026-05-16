@@ -1,7 +1,10 @@
 {{!< default}}
 
+{{> "cover-site"}}
+
 <main class="gh-main gh-outer">
     <div class="gh-inner">
+
         <section class="gh-topic gh-topic-grid">
             <h2 class="gh-topic-name">
                 {{#match pagination.pages ">" 1}}
@@ -23,6 +26,8 @@
                 {{/match}}
             </footer>
         </section>
+
+        {{> "home-puisi-esai"}}
 
         {{#if @custom.enter_tag_slugs_for_primary_sections}}
             {{#get "tags" filter="slug:[{{@custom.enter_tag_slugs_for_primary_sections}}]"}}
@@ -64,4 +69,6 @@
             {{/match}}
         {{/if}}
     </div>
+
+    {{> "home-submit-writings"}}
 </main>
